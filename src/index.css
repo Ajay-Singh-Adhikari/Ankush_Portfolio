@@ -11,7 +11,7 @@ body{
 }
 
 ::-webkit-scrollbar-track {
-  background: blue;
+  background: rgb(30, 64, 175);
 }
 
 ::-webkit-scrollbar-thumb {
