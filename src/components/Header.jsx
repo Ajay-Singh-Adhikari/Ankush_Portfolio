@@ -51,7 +51,7 @@ const Header = () => {
         initial={{ y: -60, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
-        className="flex items-center text-gray-800 bg-white/80 backdrop-blur-lg font-semibold px-6 py-4 justify-between sticky top-0 z-50 border-b border-gray-200/50 shadow-sm"
+        className="flex items-center text-gray-800 bg-white/80 backdrop-blur-lg font-semibold px-6 py-4 justify-between fixed top-0 left-0 right-0 z-50 border-b border-gray-200/50 shadow-sm"
       >
         <motion.div
           onClick={handleScrollTop}
@@ -172,7 +172,7 @@ const Header = () => {
       initial={{ y: -60, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className="flex items-center text-white bg-black/20 backdrop-blur-md font-semibold px-6 py-4 justify-between sticky top-0 z-50 border-b border-white/10"
+      className="flex items-center text-white bg-black/20 backdrop-blur-md font-semibold px-6 py-4 justify-between fixed top-0 left-0 right-0 z-50 border-b border-white/10"
     >
       <motion.div
         onClick={handleScrollTop}
