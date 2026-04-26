@@ -15,118 +15,111 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className={`py-20 px-4 transition-colors duration-300 relative ${isDark ? "bg-transparent text-white" : "bg-blue-50 text-black"
-        }`}
+      className={`py-24 px-4 relative transition-colors duration-500 ${
+        isDark ? "bg-transparent text-white" : "bg-white text-black"
+      }`}
     >
-      <div className="max-w-4xl mx-auto text-center relative z-10">
-        {/* Heading Animation */}
-        <motion.h2
-          className={`text-5xl font-bold mb-6 transition-all duration-300 ${isDark
-              ? "text-blue-400 drop-shadow-[0_0_10px_rgba(59,130,246,0.5)]"
-              : "text-blue-800"
+      <div className="max-w-6xl mx-auto relative z-10">
+        <div className="text-center mb-20">
+          <motion.h2
+            className={`text-5xl md:text-6xl font-bold mb-6 ${
+              isDark 
+                ? "bg-gradient-to-r from-white via-blue-200 to-white bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(59,130,246,0.3)]" 
+                : "text-blue-900"
             }`}
-          initial={{ opacity: 0, y: -40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease: "easeOut" }}
-          viewport={{ once: true }}
-        >
-          Let's Work Together
-        </motion.h2>
+            initial={{ opacity: 0, y: -20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            Let's Create Together
+          </motion.h2>
+          <motion.p
+            className={`text-lg md:text-xl max-w-2xl mx-auto ${isDark ? "text-gray-400" : "text-gray-600"}`}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            Ready to elevate your visual content? I'm just a message away.
+          </motion.p>
+        </div>
 
-        <motion.p
-          className={`text-lg mb-12 max-w-2xl mx-auto transition-colors duration-300 ${isDark ? "text-gray-400" : "text-gray-700"
-            }`}
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ delay: 0.3, duration: 0.8 }}
-          viewport={{ once: true }}
-        >
-          Ready to take your content to the next level? Reach out for a collaboration!
-        </motion.p>
-
-        {/* Social Links Animation */}
-        <motion.div
-          className="flex justify-center gap-6 mt-4 text-2xl"
-          initial={{ opacity: 0, scale: 0.8 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.5, duration: 0.6, type: "spring" }}
-          viewport={{ once: true }}
-        >
-          {[
-            {
-              href: "https://www.linkedin.com/in/ankushadhikari",
-              icon: <FaLinkedin />,
-            },
-            { href: "https://twitter.com", icon: <FaXTwitter /> },
-            { href: "https://instagram.com", icon: <FaInstagram /> },
-            { href: "https://t.me/Ankush_Adhikari", icon: <FaTelegram /> },
-          ].map((item, idx) => (
-            <motion.a
-              key={idx}
-              href={item.href}
-              target="_blank"
-              rel="noreferrer"
-              className={`p-4 rounded-2xl transition-all duration-300 border ${isDark
-                  ? "text-gray-400 hover:text-white border-white/10 glass hover:border-blue-400/50"
-                  : "text-blue-800 hover:text-blue-600 border-blue-200 bg-white shadow-sm hover:shadow-md"
-                }`}
-              whileHover={{ scale: 1.2, rotate: 5 }}
-              whileTap={{ scale: 0.9 }}
-            >
-              {item.icon}
-            </motion.a>
-          ))}
-        </motion.div>
-      </div>
-
-      <div className="max-w-4xl mx-auto mt-16 flex flex-col md:flex-row justify-center gap-8 px-4 relative z-10">
-        {/* Email Card */}
-        <motion.div
-          className={`relative rounded-2xl p-8 w-full md:w-1/2 flex flex-col items-start border transition-all duration-300 ${isDark ? "glass-card border-white/10" : "bg-white border-black/5 shadow-lg"
-            }`}
-          initial={{ opacity: 0, x: -50 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.7, ease: "easeOut" }}
-          viewport={{ once: true }}
-        >
-          <a
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-20">
+          {/* Email Card */}
+          <motion.a
             href="mailto:ankushadhikari9282@gmail.com"
-            className={`absolute -top-6 left-8 border rounded-2xl p-4 transition-all duration-300 shadow-lg ${isDark ? "bg-blue-600 border-white/20 hover:bg-blue-500" : "bg-blue-800 border-blue-700 hover:bg-blue-700 text-white"
-              }`}
-          >
-            <FaEnvelope size={24} />
-          </a>
-          <h3 className={`text-2xl font-semibold mt-6 mb-2 transition-colors duration-300 ${isDark ? "text-white" : "text-black"}`}>
-            Email Me
-          </h3>
-          <p className={`transition-colors duration-300 ${isDark ? "text-gray-400" : "text-gray-600"}`}>
-            ankushadhikari9282@gmail.com
-          </p>
-        </motion.div>
-
-        {/* Phone Card */}
-        <motion.div
-          className={`relative rounded-2xl p-8 w-full md:w-1/2 flex flex-col items-start border transition-all duration-300 ${isDark ? "glass-card border-white/10" : "bg-white border-black/5 shadow-lg"
+            className={`group p-10 rounded-[2.5rem] border flex flex-col items-center text-center transition-all duration-500 ${
+              isDark 
+                ? "bg-white/[0.03] border-white/10 hover:bg-white/[0.06] hover:border-blue-500/50 backdrop-blur-xl" 
+                : "bg-gray-50 border-gray-100 hover:bg-white hover:border-blue-200 hover:shadow-2xl"
             }`}
-          initial={{ opacity: 0, x: 50 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.7, ease: "easeOut" }}
-          viewport={{ once: true }}
-        >
-          <a
-            href="tel:+919259239112"
-            className={`absolute -top-6 left-8 border rounded-2xl p-4 transition-all duration-300 shadow-lg ${isDark ? "bg-blue-600 border-white/20 hover:bg-blue-500" : "bg-blue-800 border-blue-700 hover:bg-blue-700 text-white"
-              }`}
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            whileHover={{ y: -10 }}
+            viewport={{ once: true }}
           >
-            <FaPhone size={24} />
-          </a>
-          <h3 className={`text-2xl font-semibold mt-6 mb-2 transition-colors duration-300 ${isDark ? "text-white" : "text-black"}`}>
-            Call Me
-          </h3>
-          <p className={`transition-colors duration-300 ${isDark ? "text-gray-400" : "text-gray-600"}`}>
-            +91 9259239112
+            <div className={`w-20 h-20 rounded-3xl flex items-center justify-center mb-6 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-6 ${
+              isDark ? "bg-blue-500/20 text-blue-400" : "bg-blue-600 text-white shadow-lg shadow-blue-200"
+            }`}>
+              <FaEnvelope size={32} />
+            </div>
+            <h3 className="text-2xl font-bold mb-3">Email Me</h3>
+            <p className={`${isDark ? "text-gray-400" : "text-gray-600"} font-medium`}>ankushadhikari9282@gmail.com</p>
+          </motion.a>
+
+          {/* Phone Card */}
+          <motion.a
+            href="tel:+919259239112"
+            className={`group p-10 rounded-[2.5rem] border flex flex-col items-center text-center transition-all duration-500 ${
+              isDark 
+                ? "bg-white/[0.03] border-white/10 hover:bg-white/[0.06] hover:border-blue-500/50 backdrop-blur-xl" 
+                : "bg-gray-50 border-gray-100 hover:bg-white hover:border-blue-200 hover:shadow-2xl"
+            }`}
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            whileHover={{ y: -10 }}
+            viewport={{ once: true }}
+          >
+            <div className={`w-20 h-20 rounded-3xl flex items-center justify-center mb-6 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-6 ${
+              isDark ? "bg-blue-500/20 text-blue-400" : "bg-blue-600 text-white shadow-lg shadow-blue-200"
+            }`}>
+              <FaPhone size={32} />
+            </div>
+            <h3 className="text-2xl font-bold mb-3">Call Me</h3>
+            <p className={`${isDark ? "text-gray-400" : "text-gray-600"} font-medium`}>+91 9259239112</p>
+          </motion.a>
+        </div>
+
+        {/* Social Bar */}
+        <div className="flex flex-col items-center">
+          <p className={`text-sm font-bold tracking-[0.3em] uppercase mb-10 ${isDark ? "text-blue-400" : "text-blue-900/60"}`}>
+            Connect Globally
           </p>
-        </motion.div>
+          <div className="flex flex-wrap justify-center gap-6">
+            {[
+              { href: "https://www.linkedin.com/in/ankushadhikari", icon: <FaLinkedin />, label: "LinkedIn" },
+              { href: "https://twitter.com", icon: <FaXTwitter />, label: "Twitter" },
+              { href: "https://instagram.com", icon: <FaInstagram />, label: "Instagram" },
+              { href: "https://t.me/Ankush_Adhikari", icon: <FaTelegram />, label: "Telegram" },
+            ].map((item, idx) => (
+              <motion.a
+                key={idx}
+                href={item.href}
+                target="_blank"
+                rel="noreferrer"
+                className={`w-16 h-16 rounded-2xl flex items-center justify-center text-2xl transition-all duration-300 border ${
+                  isDark
+                    ? "text-gray-400 hover:text-white border-white/10 glass-card hover:border-blue-400/50 hover:bg-blue-500/10"
+                    : "text-blue-900 hover:text-blue-600 border-gray-100 bg-white shadow-sm hover:shadow-xl hover:border-blue-100"
+                }`}
+                whileHover={{ y: -5, scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                {item.icon}
+              </motion.a>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );
