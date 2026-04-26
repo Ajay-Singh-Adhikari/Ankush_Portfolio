@@ -9,52 +9,64 @@ export default function Experience() {
   if (!isDark) {
     // EXACT MAIN BRANCH CODE
     return (
-      <section id="experience" className="py-10 px-4 flex flex-col items-center bg-white">
-        <motion.h2
-          initial={{ opacity: 0, y: -30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="text-4xl font-bold text-blue-600 mb-12 text-center whitespace-nowrap"
-        >
-          Experience Details
-        </motion.h2>
+      <section id="experience" className="py-20 px-4 bg-transparent">
+        <div className="max-w-6xl mx-auto">
+          <motion.h2
+            initial={{ opacity: 0, y: -30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="text-4xl font-bold text-blue-600 mb-16 text-center"
+          >
+            Experience Details
+          </motion.h2>
 
-        <div className="flex gap-5 flex-wrap justify-center">
-          {experience.map((item, index) => (
-            <motion.div
-              key={item.id}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              whileHover={{ scale: 1.05 }}
-              className="w-full max-w-md border-2 border-blue-500 rounded-lg shadow hover:shadow-lg transition p-4 bg-white"
-            >
-              <div>
-                <h4 className="text-lg font-semibold mb-1 text-black">
-                  Role: <span className="text-blue-700">{item.heading}</span>
-                </h4>
-                <h4 className="text-lg font-semibold mb-1 text-black">
-                  Current Status:{" "}
-                  <span className="text-green-700">{item.currentStatus}</span>
-                </h4>
-                <h4 className="text-lg font-semibold mb-1 text-black">
-                  Duration: <span className="text-blue-700">{item.time}</span>
-                </h4>
-                <h4 className="text-lg mb-1">
-                  <a
-                    href={item.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="underline text-black hover:text-red-700 transition"
-                  >
-                    {item.company}
-                  </a>
-                </h4>
-              </div>
-            </motion.div>
-          ))}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {experience.map((item, index) => (
+              <motion.div
+                key={item.id}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                whileHover={{ y: -10 }}
+                className="bg-white p-6 flex flex-col justify-between group h-full rounded-2xl border border-gray-200 shadow-sm hover:shadow-xl transition-all duration-300"
+              >
+                <div>
+                  <div className="flex items-start justify-between mb-4">
+                    <div className="p-3 rounded-xl bg-blue-50 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300">
+                      <svg stroke="currentColor" fill="none" strokeWidth="2" viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round" height="24" width="24" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+                    </div>
+                  </div>
+                  
+                  <h3 className="text-xl font-bold text-gray-900 mb-4 leading-tight">
+                    {item.heading}
+                  </h3>
+
+                  <div className="grid grid-cols-2 gap-3 mb-6">
+                    <div className="bg-gray-50 rounded-lg p-3 border border-gray-100">
+                      <p className="text-[10px] uppercase tracking-wider text-gray-500 mb-1">Status</p>
+                      <p className="text-sm font-semibold text-green-600">{item.currentStatus}</p>
+                    </div>
+                    <div className="bg-gray-50 rounded-lg p-3 border border-gray-100">
+                      <p className="text-[10px] uppercase tracking-wider text-gray-500 mb-1">Duration</p>
+                      <p className="text-sm font-semibold text-blue-600">{item.time}</p>
+                    </div>
+                  </div>
+                </div>
+
+                <a
+                  href={item.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-4 flex items-center justify-between p-3 rounded-lg bg-gray-50 hover:bg-blue-50 border border-gray-100 hover:border-blue-200 transition-all text-gray-600 hover:text-blue-700"
+                >
+                  <span className="text-sm font-medium truncate">{item.company}</span>
+                  <svg stroke="currentColor" fill="none" strokeWidth="2" viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round" height="16" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                </a>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
     );
