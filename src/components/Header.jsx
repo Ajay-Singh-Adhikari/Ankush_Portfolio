@@ -51,35 +51,35 @@ const Header = () => {
         initial={{ y: -60, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
-        className="flex items-center text-white bg-gradient-to-b from-blue-700 via-blue-900 to-blue-800 font-semibold px-4 py-2 justify-between sticky top-0 z-50 shadow-md"
+        className="flex items-center text-gray-800 bg-white/80 backdrop-blur-lg font-semibold px-6 py-4 justify-between sticky top-0 z-50 border-b border-gray-200/50 shadow-sm"
       >
         <motion.div
           onClick={handleScrollTop}
-          className="hover:cursor-pointer hover:scale-110 transition-transform duration-300 ease-in-out text-lg"
-          whileHover={{ scale: 1.1 }}
+          className="hover:cursor-pointer hover:text-blue-600 transition-all duration-300 ease-in-out text-xl font-bold tracking-tight"
+          whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
           Ankush Singh Adhikari
         </motion.div>
 
-        <div className="flex items-center gap-x-4">
+        <div className="flex items-center gap-x-6">
           <ThemeToggle />
           <motion.button
-            className="md:hidden"
+            className="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors"
             onClick={() => setMenuOpen(!menuOpen)}
             whileTap={{ scale: 0.9 }}
           >
-            <FaBars className="w-6 h-6 text-white" />
+            <FaBars className="w-6 h-6 text-gray-800" />
           </motion.button>
 
-          <ul className="hidden md:flex gap-x-4 items-center">
+          <ul className="hidden md:flex gap-x-6 items-center">
             {navItems.map((item, index) => {
               const Icon = item.icon;
               return (
                 <motion.li
                   key={item.name}
                   className="relative group cursor-pointer"
-                  whileHover={{ scale: 1.1 }}
+                  whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -87,13 +87,10 @@ const Header = () => {
                 >
                   <a
                     href={`#${item.to}`}
-                    className="flex items-center gap-x-2 hover:scale-110 transition"
+                    className="flex items-center gap-x-2 hover:text-blue-600 transition-colors"
                   >
-                    <Icon className="text-xl md:inline-block lg:hidden group-hover:scale-150 transition-transform duration-300" />
-                    <span className="hidden lg:inline-block hover:text-black">
-                      {item.name}
-                    </span>
-                    <span className="absolute left-1/2 transform -translate-x-1/2 top-8 opacity-0 group-hover:opacity-100 text-xs bg-black text-white px-2 py-1 rounded transition-all duration-300 md:block lg:hidden">
+                    <Icon className="text-xl md:inline-block lg:hidden group-hover:text-blue-600 transition-colors" />
+                    <span className="hidden lg:inline-block">
                       {item.name}
                     </span>
                   </a>
@@ -102,9 +99,9 @@ const Header = () => {
             })}
             <motion.a
               href="#contact"
-              whileHover={{ scale: 1.1 }}
+              whileHover={{ scale: 1.05, boxShadow: "0px 4px 15px rgba(37, 99, 235, 0.2)" }}
               whileTap={{ scale: 0.95 }}
-              className="px-2 py-1 bg-white text-black rounded hover:bg-black hover:text-white transition duration-300"
+              className="px-5 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-all duration-300 font-bold shadow-md shadow-blue-200"
             >
               Hire Me
             </motion.a>
