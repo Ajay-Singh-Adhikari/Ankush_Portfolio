@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Global Styles */
+html {
+  scroll-behavior: smooth;
+}
+
+section {
+  scroll-margin-top: 5rem; /* Offsets the fixed header height */
+}
+
 /* Global Scrollbar Hiding */
 html, body {
   overflow-x: hidden;
