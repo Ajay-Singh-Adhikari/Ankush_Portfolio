@@ -46,7 +46,9 @@ export default function Experience() {
                   <div className="grid grid-cols-2 gap-3 mb-6">
                     <div className="bg-gray-50 rounded-lg p-3 border border-gray-100">
                       <p className="text-[10px] uppercase tracking-wider text-gray-500 mb-1">Status</p>
-                      <p className="text-sm font-semibold text-green-600">{item.currentStatus}</p>
+                      <p className={`text-sm font-semibold ${
+                        item.currentStatus.toLowerCase() === 'done' ? 'text-red-600' : 'text-green-600'
+                      }`}>{item.currentStatus}</p>
                     </div>
                     <div className="bg-gray-50 rounded-lg p-3 border border-gray-100">
                       <p className="text-[10px] uppercase tracking-wider text-gray-500 mb-1">Duration</p>
@@ -111,7 +113,9 @@ export default function Experience() {
                 <div className="grid grid-cols-2 gap-3 mb-6">
                   <div className="bg-white/5 rounded-lg p-3 border border-white/5">
                     <p className="text-[10px] uppercase tracking-wider text-gray-500 mb-1">Status</p>
-                    <p className="text-sm font-semibold text-blue-400">{item.currentStatus}</p>
+                    <p className={`text-sm font-semibold ${
+                      item.currentStatus.toLowerCase() === 'done' ? 'text-red-400' : 'text-green-400'
+                    }`}>{item.currentStatus}</p>
                   </div>
                   <div className="bg-white/5 rounded-lg p-3 border border-white/5">
                     <p className="text-[10px] uppercase tracking-wider text-gray-500 mb-1">Duration</p>
