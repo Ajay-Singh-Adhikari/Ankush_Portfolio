@@ -2,23 +2,82 @@
 @tailwind components;
 @tailwind utilities;
 
-body{
-  color: Black;
-  background-color: white;
+/* Global Styles */
+html {
+  scroll-behavior: smooth;
 }
+
+section {
+  scroll-margin-top: 5rem; /* Offsets the fixed header height */
+}
+
+/* Global Scrollbar Hiding */
+html, body {
+  overflow-x: hidden;
+  max-width: 100%;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
 ::-webkit-scrollbar {
-  width: 8px;
+  display: none; /* Chrome, Safari, and Opera */
 }
 
-::-webkit-scrollbar-track {
-  background: rgb(30, 64, 175);
+/* Light Theme (Default) - EXACT MAIN BRANCH */
+body {
+  color: black;
+  background-color: white;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-::-webkit-scrollbar-thumb {
-  background-color: white; 
-  border-radius: 4px; 
+/* Dark Theme - EXACT THEME/DARK BRANCH */
+.dark body {
+  color: white;
+  background-color: transparent;
 }
 
-::-webkit-scrollbar-thumb:vertical {
-  min-height: 20px;
+.dark .glass {
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+}
+
+.dark .glass-card {
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 1rem;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+}
+
+.dark .glass-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.05),
+    transparent
+  );
+  transition: 0.8s;
+  pointer-events: none;
+}
+
+.dark .glass-card:hover::before {
+  left: 150%;
+}
+
+.dark .glass-card:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(34, 211, 238, 0.3);
+  box-shadow: 0 0 30px rgba(59, 130, 246, 0.2);
 }

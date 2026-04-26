@@ -4,17 +4,22 @@ import Experience from "./components/Experience";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
 import Work from "./components/Work";
+import ThreeBackground from "./components/ThreeBackground";
+import { useTheme } from "./context/ThemeContext";
 
 function App() {
+  const { isDark } = useTheme();
+
   return (
-    <>
+    <div className={isDark ? "dark" : ""}>
+      <ThreeBackground />
       <Header />
       <Hero />
       <Education />
       <Experience />
       <Work />
       <Contact />
-    </>
+    </div>
   );
 }
 
