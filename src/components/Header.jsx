@@ -31,7 +31,7 @@ const Header = () => {
       initial={{ y: -60, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className="flex items-center text-white bg-gradient-to-b from-blue-700 via-blue-900 to-blue-800 font-semibold px-4 py-2 justify-between sticky top-0 z-50 shadow-md"
+      className="flex items-center text-white bg-black/20 backdrop-blur-md font-semibold px-6 py-4 justify-between sticky top-0 z-50 border-b border-white/10"
     >
       {/* Logo with animation */}
       <motion.div
@@ -72,7 +72,7 @@ const Header = () => {
                   className="flex items-center gap-x-2 hover:scale-110 transition"
                 >
                   <Icon className="text-xl md:inline-block lg:hidden group-hover:scale-150 transition-transform duration-300" />
-                  <span className="hidden lg:inline-block hover:text-black">
+                  <span className="hidden lg:inline-block hover:text-blue-400 transition-colors">
                     {item.name}
                   </span>
                   <span className="absolute left-1/2 transform -translate-x-1/2 top-8 opacity-0 group-hover:opacity-100 text-xs bg-black text-white px-2 py-1 rounded transition-all duration-300 md:block lg:hidden">
@@ -84,9 +84,9 @@ const Header = () => {
           })}
           <motion.a
             href="#contact"
-            whileHover={{ scale: 1.1 }}
+            whileHover={{ scale: 1.05, boxShadow: "0px 0px 15px rgba(59, 130, 246, 0.6)" }}
             whileTap={{ scale: 0.95 }}
-            className="px-2 py-1 bg-white text-black rounded hover:bg-black hover:text-white transition duration-300"
+            className="px-4 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-500 transition-all duration-300 shadow-lg font-bold"
           >
             Hire Me
           </motion.a>
@@ -137,10 +137,10 @@ const Header = () => {
 
               <motion.a
                 href="#contact"
-                whileHover={{ scale: 1.05 }}
+                whileHover={{ scale: 1.05, boxShadow: "0px 0px 15px rgba(59, 130, 246, 0.4)" }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => setMenuOpen(false)}
-                className="px-2 py-1 bg-white text-black rounded hover:bg-blue-800 hover:text-white transition"
+                className="px-4 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-500 transition-all duration-300 text-center font-bold"
               >
                 Hire Me
               </motion.a>

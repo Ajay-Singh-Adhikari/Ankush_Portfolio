@@ -12,34 +12,33 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="bg-gradient-to-b from-black via-blue-900 to-black py-12 px-4 text-white"
+      className="bg-transparent py-20 px-4 text-white relative"
     >
-      <div className="max-w-4xl mx-auto text-center">
+      <div className="max-w-4xl mx-auto text-center relative z-10">
         {/* Heading Animation */}
         <motion.h2
-          className="text-4xl font-bold mb-4 text-blue-400"
+          className="text-5xl font-bold mb-6 text-blue-400 drop-shadow-[0_0_10px_rgba(59,130,246,0.5)]"
           initial={{ opacity: 0, y: -40 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
           viewport={{ once: true }}
         >
-          Contact Me
+          Let's Work Together
         </motion.h2>
 
         <motion.p
-          className="text-gray-300 mb-8"
+          className="text-gray-400 text-lg mb-12 max-w-2xl mx-auto"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ delay: 0.3, duration: 0.8 }}
           viewport={{ once: true }}
         >
-          I’d love to hear from you. Feel free to reach out for any project or
-          just to say hello!
+          Ready to take your content to the next level? Reach out for a collaboration!
         </motion.p>
 
         {/* Social Links Animation */}
         <motion.div
-          className="flex justify-center gap-4 mt-4 text-xl"
+          className="flex justify-center gap-6 mt-4 text-2xl"
           initial={{ opacity: 0, scale: 0.8 }}
           whileInView={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.5, duration: 0.6, type: "spring" }}
@@ -59,7 +58,7 @@ export default function Contact() {
               href={item.href}
               target="_blank"
               rel="noreferrer"
-              className="hover:text-black border p-2 rounded-full transition hover:border-black hover:scale-110"
+              className="text-gray-400 hover:text-white border border-white/10 p-4 rounded-2xl transition-all duration-300 glass hover:scale-110 hover:border-blue-400/50"
               whileHover={{ scale: 1.2, rotate: 5 }}
               whileTap={{ scale: 0.9 }}
             >
@@ -69,52 +68,41 @@ export default function Contact() {
         </motion.div>
       </div>
 
-      {/* Contact Options */}
-      <motion.h2
-        className="text-center text-2xl font-bold mt-6 mb-10"
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7, delay: 0.3 }}
-        viewport={{ once: true }}
-      >
-        Connect me via Email or Phone
-      </motion.h2>
-
-      <div className="flex flex-col md:flex-row justify-center gap-8 px-4">
+      <div className="max-w-4xl mx-auto mt-16 flex flex-col md:flex-row justify-center gap-8 px-4 relative z-10">
         {/* Email Card */}
         <motion.div
-          className="relative bg-transparent border border-gray-600 rounded-lg p-6 w-full md:w-1/2 flex flex-col items-start hover:border-blue-500 hover:scale-105 transition"
-          initial={{ opacity: 0, x: -100 }}
+          className="relative glass-card rounded-2xl p-8 w-full md:w-1/2 flex flex-col items-start border border-white/10"
+          initial={{ opacity: 0, x: -50 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
           viewport={{ once: true }}
         >
           <a
             href="mailto:ankushadhikari9282@gmail.com"
-            className="absolute -top-5 left-6 bg-blue-900 border rounded-full p-3 hover:bg-blue-500 hover:text-white transition"
+            className="absolute -top-6 left-8 bg-blue-600 border border-white/20 rounded-2xl p-4 hover:bg-blue-500 transition-all duration-300 shadow-lg"
           >
-            <FaEnvelope size={20} />
+            <FaEnvelope size={24} />
           </a>
-          <h3 className="text-xl font-semibold mt-6 mb-2">Email Address</h3>
-          <p>ankushadhikari9282@gmail.com</p>
+          <h3 className="text-2xl font-semibold mt-6 mb-2 text-white">Email Me</h3>
+          <p className="text-gray-400">ankushadhikari9282@gmail.com</p>
         </motion.div>
 
         {/* Phone Card */}
         <motion.div
-          className="relative bg-transparent border border-gray-600 rounded-lg p-6 w-full md:w-1/2 flex flex-col items-start hover:border-blue-500 hover:scale-105 transition"
-          initial={{ opacity: 0, x: 100 }}
+          className="relative glass-card rounded-2xl p-8 w-full md:w-1/2 flex flex-col items-start border border-white/10"
+          initial={{ opacity: 0, x: 50 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
           viewport={{ once: true }}
         >
           <a
             href="tel:+919259239112"
-            className="absolute -top-5 left-6 bg-blue-900 border rounded-full p-3 hover:bg-blue-500 hover:text-white transition"
+            className="absolute -top-6 left-8 bg-blue-600 border border-white/20 rounded-2xl p-4 hover:bg-blue-500 transition-all duration-300 shadow-lg"
           >
-            <FaPhone size={20} />
+            <FaPhone size={24} />
           </a>
-          <h3 className="text-xl font-semibold mt-6">Phone Number</h3>
-          <p className="mt-2">+91 9259239112</p>
+          <h3 className="text-2xl font-semibold mt-6 mb-2 text-white">Call Me</h3>
+          <p className="text-gray-400">+91 9259239112</p>
         </motion.div>
       </div>
     </section>
