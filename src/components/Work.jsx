@@ -1,8 +1,10 @@
 import { useSelector } from "react-redux";
 import { motion } from "motion/react";
+import { useTheme } from "../context/ThemeContext";
 
 export default function Work() {
   const { thumbnails, shorts, longVideos } = useSelector((state) => state.work);
+  const { isDark } = useTheme();
 
   const ytVideos = [
     { id: 1, link: "https://youtu.be/PzVY1wNANck?si=Zup81WGmsbT5zJUG" },
@@ -18,9 +20,13 @@ export default function Work() {
   };
 
   return (
-    <section id="work" className="px-4 py-8 bg-transparent text-white">
+    <section id="work" className={`px-4 py-8 transition-colors duration-300 ${isDark ? "bg-transparent text-white" : "bg-white text-black"}`}>
       <motion.h2
-        className="text-4xl font-bold mb-12 text-center bg-gradient-to-r from-white via-slate-200 to-white bg-clip-text text-transparent drop-shadow-[0_0_10px_rgba(59,130,246,0.3)]"
+        className={`text-4xl font-bold mb-12 text-center transition-colors duration-300 ${
+          isDark 
+            ? "bg-gradient-to-r from-white via-slate-200 to-white bg-clip-text text-transparent drop-shadow-[0_0_10px_rgba(59,130,246,0.3)]" 
+            : "text-blue-800"
+        }`}
         initial={{ opacity: 0, y: -30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
@@ -31,7 +37,7 @@ export default function Work() {
 
       {/* Thumbnails */}
       <motion.h2
-        className="text-2xl font-semibold mb-4 text-blue-400"
+        className={`text-2xl font-semibold mb-4 transition-colors duration-300 ${isDark ? "text-blue-400" : "text-black"}`}
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
@@ -49,7 +55,9 @@ export default function Work() {
         {thumbnails.map((thumb) => (
           <motion.div
             key={thumb.id}
-            className="rounded overflow-hidden border border-white/10 shadow-xl mx-auto glass-card"
+            className={`rounded overflow-hidden border transition-all duration-300 mx-auto ${
+              isDark ? "border-white/10 shadow-xl glass-card" : "border-black/5 shadow-md"
+            }`}
             initial={{ scale: 0, opacity: 0 }}
             whileInView={{ scale: 1, opacity: 1, transition: { duration: 0.6, type: "spring" } }}
             whileHover={{ scale: 1.05, rotate: 2 }}
@@ -61,7 +69,7 @@ export default function Work() {
 
       {/* Video Editing */}
       <motion.h2
-        className="text-2xl font-semibold mb-4 mt-30 text-blue-400"
+        className={`text-2xl font-semibold mb-4 mt-12 transition-colors duration-300 ${isDark ? "text-blue-400" : "text-black"}`}
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
@@ -73,7 +81,7 @@ export default function Work() {
       {/* Long Form Videos */}
       <div className="p-5">
         <motion.h3
-          className="font-semibold mb-2 text-blue-300 text-2xl"
+          className={`font-semibold mb-2 text-2xl transition-colors duration-300 ${isDark ? "text-blue-300" : "text-blue-800"}`}
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -91,10 +99,12 @@ export default function Work() {
           {longVideos.map((video) => (
             <motion.div
               key={video.id}
-              className="rounded overflow-hidden border border-white/10 mx-auto w-full glass-card"
+              className={`rounded overflow-hidden border mx-auto w-full transition-all duration-300 ${
+                isDark ? "border-white/10 glass-card" : "border-black/5 bg-gray-50 shadow-md"
+              }`}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0, transition: { duration: 0.6 } }}
-              whileHover={{ scale: 1.04, boxShadow: "0px 10px 30px rgba(59, 130, 246, 0.3)" }}
+              whileHover={{ scale: 1.04, boxShadow: isDark ? "0px 10px 30px rgba(59, 130, 246, 0.3)" : "0px 10px 20px rgba(0,0,0,0.1)" }}
             >
               <video
                 src={video.url}
@@ -110,7 +120,9 @@ export default function Work() {
           {ytVideos.map((vid) => (
             <motion.div
               key={vid.id}
-              className="relative w-full pb-[56.25%] h-0 rounded-lg overflow-hidden border border-white/10 shadow-xl glass-card"
+              className={`relative w-full pb-[56.25%] h-0 rounded-lg overflow-hidden border transition-all duration-300 ${
+                isDark ? "border-white/10 shadow-xl glass-card" : "border-black/5 shadow-md bg-gray-50"
+              }`}
               initial={{ scale: 0, opacity: 0 }}
               whileInView={{ scale: 1, opacity: 1, transition: { duration: 0.7, type: "spring" } }}
               whileHover={{ scale: 1.06, rotate: -1 }}
@@ -130,7 +142,7 @@ export default function Work() {
 
       {/* Short Form Videos */}
       <motion.h3
-        className="mb-2 pb-10 text-blue-300 font-semibold text-2xl"
+        className={`mb-2 pb-10 font-semibold text-2xl transition-colors duration-300 ${isDark ? "text-blue-300" : "text-blue-800"}`}
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
@@ -148,7 +160,9 @@ export default function Work() {
         {shorts.map((short) => (
           <motion.div
             key={short.id}
-            className="w-full max-w-sm rounded overflow-hidden border border-white/10 glass-card"
+            className={`w-full max-w-sm rounded overflow-hidden border transition-all duration-300 ${
+              isDark ? "border-white/10 glass-card" : "border-black/5 bg-gray-50 shadow-md"
+            }`}
             initial={{ y: 20, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1, transition: { type: "spring", stiffness: 100 } }}
             whileHover={{ scale: 1.05, y: -5, rotate: 1 }}
@@ -160,7 +174,9 @@ export default function Work() {
                 loop
                 muted
                 src={short.url}
-                className="w-full object-contain bg-black/40 rounded"
+                className={`w-full object-contain rounded transition-colors duration-300 ${
+                  isDark ? "bg-black/40" : "bg-black/10"
+                }`}
               />
             </div>
           </motion.div>

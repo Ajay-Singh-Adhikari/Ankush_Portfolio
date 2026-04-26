@@ -99,8 +99,9 @@ const ThreeBackground = () => {
     window.addEventListener("mousemove", onMouseMove);
 
     // Animation loop
+    let animationFrameId;
     const animate = () => {
-      requestAnimationFrame(animate);
+      animationFrameId = requestAnimationFrame(animate);
 
       target.x += (mouse.x - target.x) * 0.05;
       target.y += (mouse.y - target.y) * 0.05;
@@ -180,6 +181,7 @@ const ThreeBackground = () => {
     return () => {
       window.removeEventListener("resize", handleResize);
       window.removeEventListener("mousemove", onMouseMove);
+      cancelAnimationFrame(animationFrameId);
       if (containerRef.current && renderer.domElement.parentNode === containerRef.current) {
         containerRef.current.removeChild(renderer.domElement);
       }
