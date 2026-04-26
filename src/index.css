@@ -2,6 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Global Scrollbar Hiding */
+html, body {
+  overflow-x: hidden;
+  max-width: 100%;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, and Opera */
+}
+
 /* Light Theme (Default) - EXACT MAIN BRANCH */
 body {
   color: black;
@@ -9,35 +21,10 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: rgb(30, 64, 175);
-}
-
-::-webkit-scrollbar-thumb {
-  background-color: white; 
-  border-radius: 4px; 
-}
-
-::-webkit-scrollbar-thumb:vertical {
-  min-height: 20px;
-}
-
 /* Dark Theme - EXACT THEME/DARK BRANCH */
 .dark body {
   color: white;
   background-color: transparent;
-  overflow-x: hidden;
-  max-width: 100%;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
-.dark ::-webkit-scrollbar {
-  display: none;
 }
 
 .dark .glass {
