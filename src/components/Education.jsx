@@ -6,26 +6,74 @@ export default function Education() {
   const education = useSelector((state) => state.education.data);
   const { isDark } = useTheme();
 
+  if (!isDark) {
+    // EXACT MAIN BRANCH CODE
+    return (
+      <section id="education" className="py-10 px-4 flex flex-col items-center bg-white">
+        <motion.h2
+          initial={{ opacity: 0, y: -30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="text-4xl font-bold text-blue-600 mb-12 text-center whitespace-nowrap overflow-none"
+        >
+          Education Details
+        </motion.h2>
+
+        <div className="relative w-full max-w-4xl mx-auto">
+          <div className="hidden md:block absolute left-8 top-0 bottom-0 w-1 bg-blue-500 z-0" />
+          <div className="space-y-12 pl-0 md:pl-16 relative z-10 flex flex-col items-center md:items-start">
+            {education.map((item, index) => (
+              <motion.div
+                key={item.id}
+                initial={{ opacity: 0, x: index % 2 === 0 ? -100 : 100 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="relative w-full"
+              >
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ type: "spring", stiffness: 200 }}
+                  className="rounded-lg border-2 border-blue-500 shadow p-4 ml-0 md:ml-8 w-full text-center md:text-left bg-white"
+                >
+                  <h3 className="text-xl font-semibold mb-1 text-black">{item.heading}</h3>
+                  <span className="text-gray-600 font-medium">{item.year}</span>
+                  <p className="mt-2 text-black text-sm">
+                    I {item.school} {item.heading} from{" "}
+                    <a
+                      href={item.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="underline hover:text-blue-500"
+                    >
+                      {item.school_name}
+                    </a>
+                  </p>
+                </motion.div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  // EXACT THEME/DARK BRANCH CODE
   return (
-    <section id="education" className={`py-20 px-4 transition-colors duration-300 ${isDark ? "" : "bg-gray-50"}`}>
+    <section id="education" className="py-20 px-4">
       <div className="max-w-4xl mx-auto">
         <motion.h2
           initial={{ opacity: 0, y: -30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className={`text-4xl font-bold mb-16 text-center transition-colors duration-300 ${
-            isDark 
-              ? "bg-gradient-to-r from-white via-slate-200 to-white bg-clip-text text-transparent drop-shadow-[0_0_10px_rgba(59,130,246,0.3)]" 
-              : "text-blue-800"
-          }`}
+          className="text-4xl font-bold mb-16 text-center bg-gradient-to-r from-white via-slate-200 to-white bg-clip-text text-transparent drop-shadow-[0_0_10px_rgba(59,130,246,0.3)]"
         >
           Education Details
         </motion.h2>
 
-        <div className={`relative border-l-2 ml-4 md:ml-8 pl-8 space-y-12 transition-colors duration-300 ${
-          isDark ? "border-blue-600/30" : "border-blue-600/20"
-        }`}>
+        <div className="relative border-l-2 border-blue-600/30 ml-4 md:ml-8 pl-8 space-y-12">
           {education.map((item, index) => (
             <motion.div
               key={item.id}
@@ -36,45 +84,29 @@ export default function Education() {
               className="relative"
             >
               {/* Timeline Dot */}
-              <div className={`absolute -left-[41px] top-0 w-5 h-5 rounded-full border-4 transition-all duration-300 ${
-                isDark 
-                  ? "bg-blue-600 border-[#020205] shadow-[0_0_10px_rgba(37,99,235,0.5)]" 
-                  : "bg-blue-800 border-white shadow-lg"
-              }`} />
+              <div className="absolute -left-[41px] top-0 w-5 h-5 rounded-full bg-blue-600 border-4 border-[#020205] shadow-[0_0_10px_rgba(37,99,235,0.5)]" />
               
-              <div className={`p-6 hover:translate-x-2 transition-all duration-300 rounded-2xl ${
-                isDark 
-                  ? "glass-card" 
-                  : "bg-white border border-black/5 shadow-md hover:shadow-xl"
-              }`}>
+              <div className="glass-card p-6 hover:translate-x-2 transition-transform duration-300">
                 <div className="flex flex-wrap items-center justify-between gap-4 mb-4">
-                  <h3 className={`text-xl font-bold transition-colors duration-300 ${isDark ? "text-white" : "text-black"}`}>
-                    {item.heading}
-                  </h3>
-                  <span className={`px-3 py-1 rounded-full text-sm font-medium transition-colors duration-300 ${
-                    isDark 
-                      ? "bg-blue-500/10 border border-blue-500/20 text-blue-400" 
-                      : "bg-blue-50 text-blue-800 border border-blue-100"
-                  }`}>
+                  <h3 className="text-xl font-bold text-white">{item.heading}</h3>
+                  <span className="px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-sm font-medium">
                     {item.year}
                   </span>
                 </div>
 
-                <div className={`flex items-center gap-3 mb-4 transition-colors duration-300 ${isDark ? "text-gray-400" : "text-gray-600"}`}>
+                <div className="flex items-center gap-3 text-gray-400 mb-4">
                   <svg stroke="currentColor" fill="none" strokeWidth="2" viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round" height="18" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>
                   <a
                     href={item.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`transition-colors underline underline-offset-4 ${
-                      isDark ? "hover:text-blue-400 decoration-blue-600/30" : "hover:text-blue-800 decoration-blue-800/20"
-                    }`}
+                    className="hover:text-blue-400 transition-colors underline decoration-blue-600/30 underline-offset-4"
                   >
                     {item.school_name}
                   </a>
                 </div>
 
-                <p className={`text-sm leading-relaxed transition-colors duration-300 ${isDark ? "text-gray-400" : "text-gray-700"}`}>
+                <p className="text-gray-400 text-sm leading-relaxed">
                   Pursued {item.heading} specialization at {item.school_name}, focusing on design principles and creative execution.
                 </p>
               </div>
