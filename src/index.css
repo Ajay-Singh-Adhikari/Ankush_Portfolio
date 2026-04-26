@@ -7,18 +7,10 @@ body{
   background-color: white;
 }
 ::-webkit-scrollbar {
-  width: 8px;
+  display: none;
 }
 
-::-webkit-scrollbar-track {
-  background: rgb(30, 64, 175);
-}
-
-::-webkit-scrollbar-thumb {
-  background-color: white; 
-  border-radius: 4px; 
-}
-
-::-webkit-scrollbar-thumb:vertical {
-  min-height: 20px;
+html {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
