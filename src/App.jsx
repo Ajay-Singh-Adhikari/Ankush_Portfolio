@@ -12,7 +12,7 @@ function App() {
 
   return (
     <div className={isDark ? "dark" : ""}>
-      {isDark && <ThreeBackground />}
+      <ThreeBackground />
       <Header />
       <Hero />
       <Education />
