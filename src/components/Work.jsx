@@ -117,7 +117,7 @@ export default function Work() {
                     controls
                     loop
                     muted
-                    preload="none"
+                    preload="metadata"
                     className="w-full h-[450px] object-cover"
                   />
                 </motion.div>
@@ -166,7 +166,7 @@ export default function Work() {
                   controls
                   loop
                   muted
-                  preload="none"
+                  preload="metadata"
                   src={short.url}
                   className="w-full h-[550px] object-contain bg-black rounded-xl"
                 />
@@ -229,7 +229,7 @@ export default function Work() {
                   controls
                   loop
                   muted
-                  preload="none"
+                  preload="metadata"
                   className="w-full h-[450px] object-cover"
                 />
               </motion.div>
