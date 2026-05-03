@@ -33,6 +33,7 @@ const MobileMenu = ({ isOpen, onClose, navItems }) => {
             className="md:hidden fixed top-3 right-5"
             onClick={onClose}
             whileTap={{ scale: 0.9 }}
+            aria-label="Close navigation menu"
           >
             <FaTimes className="w-6 h-6 text-white" />
           </motion.button>
@@ -126,7 +127,7 @@ const Header = () => {
           } backdrop-blur-xl`}
           whileHover={{ scale: 1.1, rotate: 5 }}
           whileTap={{ scale: 0.9 }}
-          title={isDark ? "Switch to Light Mode" : "Switch to Dark Mode"}
+          aria-label={isDark ? "Switch to Light Mode" : "Switch to Dark Mode"}
         >
           <AnimatePresence mode="wait">
             <motion.div
@@ -176,6 +177,7 @@ const Header = () => {
               }`}
             onClick={() => setMenuOpen(true)}
             whileTap={{ scale: 0.9 }}
+            aria-label="Open navigation menu"
           >
             <FaBars className="w-6 h-6" />
           </motion.button>
