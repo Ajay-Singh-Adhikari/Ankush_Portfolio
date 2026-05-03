@@ -25,7 +25,10 @@ export default function Hero() {
         >
           <img
             src="images/Bhai.jpeg"
-            alt="Ajay"
+            alt="Ankush Singh Adhikari"
+            width="192"
+            height="192"
+            fetchpriority="high"
             className="object-cover w-full h-full rounded-md shadow-lg"
           />
         </motion.div>
@@ -75,12 +78,14 @@ export default function Hero() {
             {
               href: "https://www.linkedin.com/in/ankushadhikari",
               icon: <FaLinkedin size={20} />,
+              label: "LinkedIn",
             },
-            { href: "https://twitter.com", icon: <FaXTwitter size={20} /> },
-            { href: "#", icon: <FaInstagram size={20} /> },
+            { href: "https://twitter.com", icon: <FaXTwitter size={20} />, label: "Twitter" },
+            { href: "#", icon: <FaInstagram size={20} />, label: "Instagram" },
             {
               href: "https://t.me/Ankush_Adhikari",
               icon: <FaTelegram size={20} />,
+              label: "Telegram",
             },
           ].map((item, index) => (
             <motion.a
@@ -88,6 +93,7 @@ export default function Hero() {
               href={item.href}
               target="_blank"
               rel="noreferrer"
+              aria-label={item.label}
               className="hover:text-black text-blue-800 border hover:border-black border-blue-800 rounded-full p-3 transition"
               whileHover={{ scale: 1.2, rotate: 5 }}
               whileTap={{ scale: 0.9 }}
@@ -132,7 +138,10 @@ export default function Hero() {
         <div className="absolute inset-0 bg-blue-500 blur-2xl opacity-20 rounded-full animate-pulse"></div>
         <img
           src="images/Bhai.jpeg"
-          alt="Ajay"
+          alt="Ankush Singh Adhikari"
+          width="192"
+          height="192"
+          fetchpriority="high"
           className="object-cover w-full h-full rounded-2xl shadow-2xl border-2 border-white/20 relative z-10"
         />
       </motion.div>
@@ -175,16 +184,17 @@ export default function Hero() {
         transition={{ delay: 1.2, duration: 1 }}
       >
         {[
-          { href: "https://www.linkedin.com/in/ankushadhikari", icon: <FaLinkedin size={24} /> },
-          { href: "https://twitter.com", icon: <FaXTwitter size={24} /> },
-          { href: "#", icon: <FaInstagram size={24} /> },
-          { href: "https://t.me/Ankush_Adhikari", icon: <FaTelegram size={24} /> },
+          { href: "https://www.linkedin.com/in/ankushadhikari", icon: <FaLinkedin size={24} />, label: "LinkedIn" },
+          { href: "https://twitter.com", icon: <FaXTwitter size={24} />, label: "Twitter" },
+          { href: "#", icon: <FaInstagram size={24} />, label: "Instagram" },
+          { href: "https://t.me/Ankush_Adhikari", icon: <FaTelegram size={24} />, label: "Telegram" },
         ].map((item, index) => (
           <motion.a
             key={index}
             href={item.href}
             target="_blank"
             rel="noreferrer"
+            aria-label={item.label}
             className="text-gray-400 hover:text-blue-400 border border-white/10 hover:border-blue-400/50 rounded-xl p-4 transition-all duration-300 glass"
             whileHover={{ scale: 1.1, y: -5, backgroundColor: "rgba(59, 130, 246, 0.1)" }}
             whileTap={{ scale: 0.9 }}

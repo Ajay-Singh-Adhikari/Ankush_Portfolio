@@ -88,7 +88,7 @@ export default function Work() {
                 whileInView={{ opacity: 1, scale: 1, transition: { duration: 0.6 } }}
                 whileHover={{ y: -10, scale: 1.02, rotate: 1, boxShadow: "0 20px 40px -15px rgba(0,0,0,0.1)" }}
               >
-                <img src={thumb.url} alt={thumb.id} className="w-full object-cover" />
+                <img src={thumb.url} alt={`Thumbnail ${thumb.id}`} width="640" height="360" loading="lazy" className="w-full object-cover" />
               </motion.div>
             ))}
           </motion.div>
@@ -115,9 +115,9 @@ export default function Work() {
                   <video
                     src={video.url}
                     controls
-                    autoPlay
                     loop
                     muted
+                    preload="none"
                     className="w-full h-[450px] object-cover"
                   />
                 </motion.div>
@@ -136,6 +136,7 @@ export default function Work() {
                     title={`YouTube video ${vid.id}`}
                     className="absolute top-0 left-0 w-full h-full"
                     frameBorder="0"
+                    loading="lazy"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
                   ></iframe>
@@ -163,9 +164,9 @@ export default function Work() {
               >
                 <video
                   controls
-                  autoPlay
                   loop
                   muted
+                  preload="none"
                   src={short.url}
                   className="w-full h-[550px] object-contain bg-black rounded-xl"
                 />
@@ -199,7 +200,7 @@ export default function Work() {
               whileInView={{ opacity: 1, scale: 1, transition: { duration: 0.6 } }}
               whileHover={{ y: -10, scale: 1.02, rotate: 1, boxShadow: "0 20px 40px -15px rgba(59,130,246,0.3)" }}
             >
-              <img src={thumb.url} alt={thumb.id} className="w-full object-cover" />
+              <img src={thumb.url} alt={`Thumbnail ${thumb.id}`} width="640" height="360" loading="lazy" className="w-full object-cover" />
             </motion.div>
           ))}
         </motion.div>
@@ -226,9 +227,9 @@ export default function Work() {
                 <video
                   src={video.url}
                   controls
-                  autoPlay
                   loop
                   muted
+                  preload="none"
                   className="w-full h-[450px] object-cover"
                 />
               </motion.div>
@@ -274,9 +275,9 @@ export default function Work() {
             >
               <video
                 controls
-                autoPlay
                 loop
                 muted
+                preload="none"
                 src={short.url}
                 className="w-full h-[550px] object-contain bg-black/40 rounded-xl"
               />

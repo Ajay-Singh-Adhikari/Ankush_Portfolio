@@ -107,6 +107,7 @@ export default function Contact() {
                 href={item.href}
                 target="_blank"
                 rel="noreferrer"
+                aria-label={item.label}
                 className={`w-16 h-16 rounded-2xl flex items-center justify-center text-2xl transition-all duration-300 border ${
                   isDark
                     ? "text-gray-400 hover:text-white border-white/10 glass-card hover:border-blue-400/50 hover:bg-blue-500/10"
