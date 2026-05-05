@@ -16,7 +16,7 @@ export default function Work() {
     const videoIdMatch = url.match(
       /(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/))([^?&]+)/
     );
-    return videoIdMatch ? `https://www.youtube.com/embed/${videoIdMatch[1]}` : "";
+    return videoIdMatch ? `https://www.youtube-nocookie.com/embed/${videoIdMatch[1]}` : "";
   };
 
   const SectionTitle = ({ children, isDark, className = "" }) => (

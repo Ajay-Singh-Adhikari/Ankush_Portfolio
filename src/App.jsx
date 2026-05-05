@@ -4,10 +4,10 @@ import Education from "./components/Education";
 import Experience from "./components/Experience";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
-import Work from "./components/Work";
 import { useTheme } from "./context/ThemeContext";
 
 const ThreeBackground = lazy(() => import("./components/ThreeBackground"));
+const Work = lazy(() => import("./components/Work"));
 
 function App() {
   const { isDark } = useTheme();
@@ -22,7 +22,9 @@ function App() {
         <Hero />
         <Education />
         <Experience />
-        <Work />
+        <Suspense fallback={<div id="work" style={{ minHeight: "100vh" }} />}>
+          <Work />
+        </Suspense>
         <Contact />
       </main>
     </div>
