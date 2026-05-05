@@ -1,6 +1,52 @@
+import { useState } from "react";
 import { useSelector } from "react-redux";
 import { motion } from "motion/react";
 import { useTheme } from "../context/ThemeContext";
+
+function getVideoId(url) {
+  const m = url.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/))([^?&]+)/);
+  return m ? m[1] : "";
+}
+
+function YoutubeFacade({ videoId, title }) {
+  const [active, setActive] = useState(false);
+  if (active) {
+    return (
+      <iframe
+        src={`https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1`}
+        title={title}
+        className="absolute top-0 left-0 w-full h-full"
+        frameBorder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowFullScreen
+      />
+    );
+  }
+  return (
+    <button
+      type="button"
+      onClick={() => setActive(true)}
+      aria-label={`Play ${title}`}
+      className="absolute top-0 left-0 w-full h-full group"
+    >
+      <img
+        src={`https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`}
+        alt={title}
+        loading="lazy"
+        width="480"
+        height="360"
+        className="w-full h-full object-cover"
+      />
+      <span className="absolute inset-0 flex items-center justify-center bg-black/30 group-hover:bg-black/20 transition-colors">
+        <span className="w-16 h-12 bg-red-600 rounded-xl flex items-center justify-center shadow-2xl group-hover:scale-110 transition-transform">
+          <svg className="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M8 5v14l11-7z"/>
+          </svg>
+        </span>
+      </span>
+    </button>
+  );
+}
 
 export default function Work() {
   const { thumbnails, shorts, longVideos } = useSelector((state) => state.work);
@@ -11,13 +57,6 @@ export default function Work() {
     { id: 2, link: "https://youtu.be/meCyjRMClqM?si=5tlMUCqN5xb1GXG6" },
     { id: 3, link: "https://youtu.be/xNATtdTBbL0?si=Hr_hYEwGanUOSNwS" },
   ];
-
-  const getEmbedLink = (url) => {
-    const videoIdMatch = url.match(
-      /(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/))([^?&]+)/
-    );
-    return videoIdMatch ? `https://www.youtube-nocookie.com/embed/${videoIdMatch[1]}` : "";
-  };
 
   const SectionTitle = ({ children, isDark, className = "" }) => (
     <motion.h2
@@ -67,7 +106,7 @@ export default function Work() {
 
   if (!isDark) {
     return (
-      <section id="work" className="px-4 py-20 bg-transparent text-black">
+      <section className="px-4 py-20 bg-transparent text-black">
         <div className="max-w-7xl mx-auto">
           <SectionTitle isDark={false}>My Works</SectionTitle>
 
@@ -131,15 +170,7 @@ export default function Work() {
                   whileInView={{ opacity: 1, y: 0, transition: { duration: 0.7 } }}
                   whileHover={{ y: -10, scale: 1.01, rotate: -1 }}
                 >
-                  <iframe
-                    src={getEmbedLink(vid.link)}
-                    title={`YouTube video ${vid.id}`}
-                    className="absolute top-0 left-0 w-full h-full"
-                    frameBorder="0"
-                    loading="lazy"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                  ></iframe>
+                  <YoutubeFacade videoId={getVideoId(vid.link)} title={`YouTube video ${vid.id}`} />
                 </motion.div>
               ))}
             </motion.div>
@@ -179,7 +210,7 @@ export default function Work() {
   }
 
   return (
-    <section id="work" className="px-4 py-20 bg-transparent text-white">
+    <section className="px-4 py-20 bg-transparent text-white">
       <div className="max-w-7xl mx-auto">
         <SectionTitle isDark={true}>My Works</SectionTitle>
 
@@ -243,14 +274,7 @@ export default function Work() {
                 whileInView={{ opacity: 1, y: 0, transition: { duration: 0.7 } }}
                 whileHover={{ y: -10, scale: 1.01, rotate: -1 }}
               >
-                <iframe
-                  src={getEmbedLink(vid.link)}
-                  title={`YouTube video ${vid.id}`}
-                  className="absolute top-0 left-0 w-full h-full"
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                ></iframe>
+                <YoutubeFacade videoId={getVideoId(vid.link)} title={`YouTube video ${vid.id}`} />
               </motion.div>
             ))}
           </motion.div>

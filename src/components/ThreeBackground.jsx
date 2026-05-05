@@ -26,7 +26,7 @@ const ThreeBackground = () => {
     const group = new THREE.Group();
     scene.add(group);
 
-    const particlesCount = 80;
+    const particlesCount = 30;
     const maxDistance = 4;
     
     const positions = new Float32Array(particlesCount * 3);
@@ -100,10 +100,13 @@ const ThreeBackground = () => {
 
     window.addEventListener("mousemove", onMouseMove);
 
-    // Animation loop
+    // Animation loop — capped at 30fps to reduce main-thread work
     let animationFrameId;
-    const animate = () => {
+    let lastFrameTime = 0;
+    const animate = (timestamp) => {
       animationFrameId = requestAnimationFrame(animate);
+      if (timestamp - lastFrameTime < 33) return; // ~30fps
+      lastFrameTime = timestamp;
 
       target.x += (mouse.x - target.x) * 0.05;
       target.y += (mouse.y - target.y) * 0.05;
