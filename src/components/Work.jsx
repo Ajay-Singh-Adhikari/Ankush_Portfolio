@@ -106,7 +106,7 @@ export default function Work() {
 
   if (!isDark) {
     return (
-      <section className="px-4 py-20 bg-transparent text-black">
+      <section id="work" className="px-4 py-20 bg-transparent text-black">
         <div className="max-w-7xl mx-auto">
           <SectionTitle isDark={false}>My Works</SectionTitle>
 
@@ -210,7 +210,7 @@ export default function Work() {
   }
 
   return (
-    <section className="px-4 py-20 bg-transparent text-white">
+    <section id="work" className="px-4 py-20 bg-transparent text-white">
       <div className="max-w-7xl mx-auto">
         <SectionTitle isDark={true}>My Works</SectionTitle>
 
